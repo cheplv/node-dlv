@@ -1,0 +1,18 @@
+{
+	"author": "Yuri Tcherepanov <cheplv@gmail.com>",
+	"name": "node-dlv",
+	"description": "Node.js Draugiem.lv API (IFrype)",
+	"version": "0.0.1",
+	"homepage": "http://draugiem.lv",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/cheplv/node-dlv.git"
+	},
+	"main": "index.js",
+	"engines": {
+		"node": "0.10.x"
+	},
+	"dependencies": {
+		"needle": ">=0.6.6"
+	}
+}
