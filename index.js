@@ -1,16 +1,22 @@
 var apiUrl = "http://api.draugiem.lv/json/";
 
-function DraugiemAPI(appId, appKey) {
+function DraugiemAPI(appId, appKey, session) {
 	this.appId = appId;
 	this.appKey = appKey;
 	this.apiKey = '';
+	
+	if (typeof session === 'Object') {
+		if (typeof session.apikey !== 'undefined') {
+			this.apiKey = session.apikey;
+		}
+	}
 }
 
 DraugiemAPI.prototype.setApiKey = function(apiKey) {
 	this.apiKey = apiKey;
 };
 
-DraugiemAPI.prototype.getSession = function(session, callback) {
+DraugiemAPI.prototype.getSession = function(callback) {
 	this.apiCall("authorize", {code: session.dr_auth_code}, function(err, result) {
 		callback(err, result);
 	});
@@ -35,6 +41,7 @@ DraugiemAPI.prototype.apiCall = function(action, params, callback) {
 };
 
 exports.createClient = function(appId, appKey, session) {
-	return new DraugiemAPI(appId, appKey);
+	var api = new DraugiemAPI(appId, appKey, session);
+	return api;
 };
 
