@@ -31,8 +31,6 @@ DraugiemAPI.prototype.apiCall = function(action, params, callback) {
 		params.apikey = this.apiKey;
 	}
 	
-	console.log(params);
-	
 	needle.post(apiUrl, params, function(err, resp) {
 		if (typeof err === 'undefined') err = null;
 		callback(err, resp);
